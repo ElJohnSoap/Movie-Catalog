@@ -1,0 +1,15 @@
+﻿'filmCatalog.exe' (Win32): Loaded 'C:\Users\hloiv\source\repos\filmCatalog\x64\Debug\filmCatalog.exe'. Symbols loaded.
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\ntdll.dll'. 
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\kernel32.dll'. 
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\KernelBase.dll'. 
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\msvcp140d.dll'. 
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\vcruntime140d.dll'. 
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\vcruntime140_1d.dll'. 
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\ucrtbased.dll'. 
+The thread 0x37b8 has exited with code 0 (0x0).
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\kernel.appcore.dll'. 
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\msvcrt.dll'. 
+'filmCatalog.exe' (Win32): Loaded 'C:\Windows\System32\rpcrt4.dll'. 
+The thread 0x3118 has exited with code 0 (0x0).
+The thread 0x182c has exited with code 0 (0x0).
+The program '[3452] filmCatalog.exe' has exited with code 0 (0x0).

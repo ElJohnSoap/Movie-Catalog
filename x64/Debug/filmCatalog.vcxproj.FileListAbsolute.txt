@@ -1,0 +1,2 @@
+C:\Users\hloiv\source\repos\multiArr\filmCatalog\x64\Debug\filmCatalog.exe
+C:\Users\hloiv\source\repos\filmCatalog\x64\Debug\filmCatalog.exe
