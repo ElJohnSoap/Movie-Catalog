@@ -76,7 +76,7 @@ int main()
 		cout << "\n==========================" << endl;
 		cout << "\n1 - Показ всех записей" << endl;
 		cout << "2 - Добавление фильма" << endl;
-		cout << "3 - сымый популярный в каталоге" << endl;
+		cout << "3 - Cамый популярный в каталоге" << endl;
 		cout << "4 - Поиск по названию" << endl;
 		cout << "5 - Поиск по жанру" << endl;
 		cout << "6 - Поиск по режиссеру" << endl;
@@ -230,6 +230,7 @@ void addFilm(movie*& movieCat, int& size) {
 
 void printCat(movie* a, int size) {
 	for (int i = 0; i < size; i++) {
+		cout << "\n№" << i+1 << " ";
 		printFilm(a[i]);
 	}
 	cout << endl;
