@@ -210,11 +210,13 @@ movie creatFilm() {
 
 void printFilm(movie a) {
 	cout << endl;
+	cout << "---------------------------\n";
 	cout << "Название - " << a.name << endl;
 	cout << "Режиссер - " << a.director << endl;
 	cout << "Жанр     - " << genreSelect(a) << endl;
 	cout << "Рейтинг  - " << a.rait << endl;
 	cout << "Цена     - " << a.price << endl;
+	cout << "---------------------------\n";
 }
 
 void addFilm(movie*& movieCat, int& size) {
