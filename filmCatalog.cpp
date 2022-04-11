@@ -44,10 +44,10 @@ void addFilm(movie*& movieCat, int& size);//добавление в массив
 
 void printCat(movie* a, int size); //печать массива
 
-void searchGenre(movie* a, movie*& f, int size, int &size2); //заносит найденные в массив movieFind по ссылке
+void searchGenre(movie* a, movie*& f, int size, int &size2, int g); //заносит найденные в массив movieFind по ссылке
 void fullInfo(movie* a, int i); //вывод полной информации о фильме
 void searchName(movie* a, int size); // поиск по названию без учёта регистра
-void searchDir(movie* a, movie*& f, int size, int& size2); //поиск без учёта регистра, заносит найденные в массив movieFind по ссылке
+void searchDir(movie* a, movie*& f, int size, int& size2, string n); //поиск без учёта регистра, заносит найденные в массив movieFind по ссылке
 void mostPopular(movie* a, int size);     //поиск популярного
 void mostPopularFind(movie* a, int size); //для возможности выбора искать или нет в каталоге найденных фильмов
 void fill(movie*& movieCat) {
@@ -105,14 +105,19 @@ int main()
 		}
 			  break;
 		case 5: {
-			
-			searchGenre(movieCat, movieFind, size, size2);
+			printMenuGenre();
+			int g;
+			cin >> g;
+			searchGenre(movieCat, movieFind, size, size2, g);
 			printCat(movieFind, size2);
 			mostPopularFind(movieFind, size2);
 		}
 			  break;
 		case 6: {
-			searchDir(movieCat, movieFind, size, size2);
+			cout << "Введите режиссера - ";
+			string n;
+			getline(cin, n);
+			searchDir(movieCat, movieFind, size, size2, n);
 			printCat(movieFind, size2);
 			mostPopularFind(movieFind, size2);
 		}
@@ -243,10 +248,7 @@ void printCat(movie* a, int size) {
 	cout << endl;
 }
 
-void searchGenre(movie* a, movie*& f, int size, int& size2) {
-	printMenuGenre();
-	int g;
-	cin >> g;
+void searchGenre(movie* a, movie*& f, int size, int& size2, int g) {
 	cout << "\nПоиск по жанру - " << genreSelect(g) << endl;
 		int count = 0;
 		for (int i = 0; i < size; i++) {
@@ -287,10 +289,7 @@ void searchName(movie* a, int size) {
 	}
 	if (s) cout << "Фильм не найден";
 }
-void searchDir(movie* a, movie*& f, int size, int& size2) {
-	cout << "Введите режиссера - ";
-	string n;
-	getline(cin, n);
+void searchDir(movie* a, movie*& f, int size, int& size2, string n) {
 	bool s = true;
 	int count = 0;
 	cout << "\nФильмы режиссера " << n << endl;
