@@ -32,6 +32,7 @@ GENRE gnr = NoName;
 
 string genreSelect(movie a); //выбор жанра
 string genreSelect(int a);
+void printMenuGenre();  //вывод жанров на экран
 
 //void menu();				//меню
 
@@ -43,11 +44,12 @@ void addFilm(movie*& movieCat, int& size);//добавление в массив
 
 void printCat(movie* a, int size); //печать массива
 
-void searchGenre(movie* a, movie*& f, int size, int &size2);
-void searchName(movie* a, int size);
-void searchDir(movie* a, movie*& f, int size, int& size2);
-void mostPopularFind(movie* a, int size);
-void mostPopular(movie* a, int size);
+void searchGenre(movie* a, movie*& f, int size, int &size2); //заносит найденные в массив movieFind по ссылке
+void fullInfo(movie* a, int i); //вывод полной информации о фильме
+void searchName(movie* a, int size); // поиск по названию без учёта регистра
+void searchDir(movie* a, movie*& f, int size, int& size2); //поиск без учёта регистра, заносит найденные в массив movieFind по ссылке
+void mostPopular(movie* a, int size);     //поиск популярного
+void mostPopularFind(movie* a, int size); //для возможности выбора искать или нет в каталоге найденных фильмов
 void fill(movie*& movieCat) {
 	movieCat[0] = { "Forrest Gump", "Robert Zemeckis", 1, 40, 200 };
 	movieCat[1] = { "The Curious Case of Benjamin Button", "David Fincher", 1, 35, 225 };
@@ -190,8 +192,11 @@ string genreSelect(int a) {
 	}
 	return g;
 }
-
-
+void printMenuGenre() {
+	for (int i = 1; i < 6; i++) {
+		cout << i << " - " << genreSelect(i) << endl;
+	}
+}
 movie creatFilm() {
 	movie temp;
 	cout << "Название ";
@@ -199,7 +204,7 @@ movie creatFilm() {
 	getline(cin, temp.name);
 	cout << "Режиссер ";
 	getline(cin, temp.director);
-	cout << "Выберите жанр\n 1 - Драма\n 2 - Триллер \n 3 - Экшен\n 4 - Ужасы\n";
+	printMenuGenre();
 	cin >> temp.genre;
 	cout << "Рейтинг ";
 	cin >> temp.rait;
@@ -239,7 +244,7 @@ void printCat(movie* a, int size) {
 }
 
 void searchGenre(movie* a, movie*& f, int size, int& size2) {
-	cout << "Выберите жанр\n 1 - Драма\n 2 - Триллер \n 3 - Экшен\n 4 - Ужасы\n";
+	printMenuGenre();
 	int g;
 	cin >> g;
 	cout << "\nПоиск по жанру - " << genreSelect(g) << endl;
@@ -260,6 +265,12 @@ void searchGenre(movie* a, movie*& f, int size, int& size2) {
 		f = temp;
 		size2 = count;
 }
+void fullInfo(movie* a, int i) {
+	cout << "\nВывести полную инфу?\n1 - да, 0 - нет\n";
+	int y;
+	cin >> y;
+	if (y == 1) printFilm(a[i]);
+}
 
 void searchName(movie* a, int size) {
 	cout << "Введите название - ";
@@ -268,13 +279,10 @@ void searchName(movie* a, int size) {
 	bool s = true;
 	cout << "\nПоиск фильма - " << n << endl;
 	for (int i = 0; i < size; i++) {
-		if (_stricmp(a[i].name.c_str(), n.c_str()) == 0) {
+		if (_stricmp(a[i].name.c_str(), n.c_str()) == 0) { //поиск без учёта регистра
 			cout << i << " - " << a[i].name << endl;
-			cout << "\nВывести полную инфу?\n1 - да, 0 - нет\n";
-			int y;
-			cin >> y;
-			if (y==1) printFilm(a[i]);
 			s = false;
+			fullInfo(a, i);
 		}
 	}
 	if (s) cout << "Фильм не найден";
@@ -305,7 +313,7 @@ void searchDir(movie* a, movie*& f, int size, int& size2) {
 			f = temp;
 			size2 = count;
 		}
-	if (s) cout << "Режиссер найден";
+	if (s) cout << "Режиссер не найден";
 }
 
 void mostPopular(movie* a, int size) {
@@ -316,11 +324,8 @@ void mostPopular(movie* a, int size) {
 			poz = i;
 		}
 	}
-	cout << "The most popular - " << a[poz].name;
-	cout << "\nВывести полную инфу?\n1 - да, 0 - нет\n";
-	int y;
-	cin >> y;
-	if (y == 1) printFilm(a[poz]);
+	cout << "Самый популярный - " << a[poz].name;
+	fullInfo(a, poz);
 }
 void mostPopularFind(movie* a, int size) {
 	cout << "1 - Показать самый популярный?\n0 - Нет\n";
@@ -328,4 +333,3 @@ void mostPopularFind(movie* a, int size) {
 	cin >> v;
 	if (v) mostPopular(a, size);
 }
-
