@@ -14,6 +14,7 @@
 Для реализации задачи используйте функции. Объекты
 структуры можно передавать в функцию целиком или
 отдельными полями. Выберите верный механизм передачи в каждом конкретном случае*/
+#define __CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
 #include <Windows.h>
@@ -46,7 +47,7 @@ void printCat(movie* a, int size); //печать массива
 
 void searchGenre(movie* a, movie*& f, int size, int &size2, int g); //заносит найденные в массив movieFind по ссылке
 void fullInfo(movie* a, int i); //вывод полной информации о фильме
-void searchName(movie* a, int size); // поиск по названию без учёта регистра
+void searchName(movie* a, int size, string n); // поиск по названию без учёта регистра
 void searchDir(movie* a, movie*& f, int size, int& size2, string n); //поиск без учёта регистра, заносит найденные в массив movieFind по ссылке
 void mostPopular(movie* a, int size);     //поиск популярного
 void mostPopularFind(movie* a, int size); //для возможности выбора искать или нет в каталоге найденных фильмов
@@ -101,7 +102,10 @@ int main()
 		}
 			  break;
 		case 4: {
-			searchName(movieCat, size);
+			cout << "Введите название - ";
+			string n;
+			getline(cin, n);
+			searchName(movieCat, size, n);
 		}
 			  break;
 		case 5: {
@@ -274,10 +278,8 @@ void fullInfo(movie* a, int i) {
 	if (y == 1) printFilm(a[i]);
 }
 
-void searchName(movie* a, int size) {
-	cout << "Введите название - ";
-	string n;
-	getline(cin, n);
+void searchName(movie* a, int size, string n) {
+	
 	bool s = true;
 	cout << "\nПоиск фильма - " << n << endl;
 	for (int i = 0; i < size; i++) {
